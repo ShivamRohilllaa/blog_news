@@ -1,0 +1,430 @@
+/*================================================
+Default CSS
+=================================================*/
+.switch-box {
+  position: fixed;
+  z-index: 1;
+  right: 0;
+  top: 150px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: #ffffff;
+  height: 45px;
+  width: 50px;
+  padding-top: 5px;
+  padding-left: 10px;
+  border-radius: 30px 0 0 30px;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.switch-box .switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+}
+
+.switch-box .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-box .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.switch-box .slider:before {
+  position: absolute;
+  content: "\ee7e";
+  font-family: IcoFont !important;
+  color: #000000;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  top: 0;
+  left: 6px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.switch-box input:checked + .slider:before {
+  content: '\ef9e';
+}
+
+.switch-box .slider.round {
+  border-radius: 50px;
+}
+
+.switch-box .slider.round:before {
+  border-radius: 50%;
+}
+
+.theme-dark body {
+  background-color: #000000;
+  color: #f1f1f1;
+}
+
+.theme-dark p {
+  color: #f1f1f1;
+}
+
+.theme-dark p a {
+  color: #f1f1f1 !important;
+}
+
+.theme-dark a {
+  color: #ffffff;
+}
+
+.theme-dark .h1, .theme-dark .h2, .theme-dark .h3, .theme-dark .h4, .theme-dark .h5, .theme-dark .h6, .theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6 {
+  color: #ffffff !important;
+}
+
+.theme-dark .h1 a, .theme-dark .h2 a, .theme-dark .h3 a, .theme-dark .h4 a, .theme-dark .h5 a, .theme-dark .h6 a, .theme-dark h1 a, .theme-dark h2 a, .theme-dark h3 a, .theme-dark h4 a, .theme-dark h5 a, .theme-dark h6 a {
+  color: #ffffff !important;
+}
+
+.theme-dark .navbar-light .navbar-brand {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.theme-dark .sinmun-nav nav .navbar-nav .nav-item a {
+  color: #ffffff;
+}
+
+.theme-dark .sinmun-nav nav .navbar-nav .nav-item a.active {
+  color: #d72924;
+}
+
+.theme-dark .sinmun-nav nav .navbar-nav .nav-item a:hover {
+  color: #d72924;
+}
+
+.theme-dark .sinmun-nav nav .others-options a {
+  color: #ffffff;
+}
+
+.theme-dark .sinmun-nav.is-sticky {
+  background-color: #2a2a2a !important;
+}
+
+.theme-dark .breaking-news-content {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .breaking-news-content .breaking-title {
+  color: #d72924 !important;
+}
+
+.theme-dark .default-news-area {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .single-default-inner-news .news-content {
+  background-color: #141414;
+}
+
+.theme-dark .default-video-news {
+  background-color: #141414;
+}
+
+.theme-dark .single-international-news {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .international-news-list .news-media {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .single-politics-news .news-content {
+  border: 1px solid #6c6b6b;
+}
+
+.theme-dark .single-health-lifestyle-news .news-content {
+  border: 1px solid #6c6b6b;
+}
+
+.theme-dark .single-around-the-world-news {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .around-the-world-news-media {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .gallery-news-area {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .gallery-news-list .gallery-news-media {
+  background-color: #000000;
+}
+
+.theme-dark .gallery-news-inner-slides {
+  background-color: #000000;
+}
+
+.theme-dark .single-gallery-box .gallery-content {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .north-america-inner-news {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .north-america-inner-news .single-north-america-inner-news {
+  border-bottom: 1px solid #686666;
+}
+
+.theme-dark .food-inner-news {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .food-inner-news .single-food-inner-news {
+  border-bottom: 1px solid #686666;
+}
+
+.theme-dark .fashion-inner-news {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .fashion-inner-news .single-fashion-inner-news {
+  border-bottom: 1px solid #686666;
+}
+
+.theme-dark .new-news-area {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .stay-connected li {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .stay-connected li a {
+  border-color: #807f7f;
+}
+
+.theme-dark .stay-connected li a b {
+  color: #ffffff;
+}
+
+.theme-dark .main-content-area {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .blog-box {
+  background-color: #000000;
+  margin-bottom: 30px;
+}
+
+.theme-dark .blog-box .posts-content .posts-meta span a {
+  color: #ffffff;
+}
+
+.theme-dark .blog-box .posts-content .posts-meta span a:hover {
+  color: #d72924;
+}
+
+.theme-dark .widget-area .widget ul li a {
+  color: #ffffff;
+}
+
+.theme-dark .widget-area .widget ul li a:hover {
+  color: #d72924;
+}
+
+.theme-dark .widget-area .tagcloud a {
+  color: #ffffff;
+  border: 1px solid #8b8989;
+}
+
+.theme-dark .page-title-content {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .page-title-content ul li a {
+  color: #ffffff;
+}
+
+.theme-dark .page-title-content ul li a:hover {
+  color: #d72924;
+}
+
+.theme-dark .breadcrumb {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .breadcrumb li a {
+  color: #ffffff;
+}
+
+.theme-dark .breadcrumb li a:hover {
+  color: #d72924;
+}
+
+.theme-dark blockquote {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .news-details .article-content {
+  border: 1px solid #807e7e;
+}
+
+.theme-dark .post-controls-buttons {
+  border: 1px solid #807e7e;
+}
+
+.theme-dark .post-controls-buttons div a {
+  border: 1px solid #807e7e;
+  color: #ffffff;
+}
+
+.theme-dark .comments-area .comment-author .fn {
+  color: #ffffff;
+}
+
+.theme-dark .comments-area .comment-respond {
+  background: #0e0e0e;
+  border: 1px solid #272626;
+}
+
+.theme-dark .comments-area .comment-respond label {
+  color: #ffffff;
+}
+
+.theme-dark .comments-area .comment-respond input {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #272626;
+}
+
+.theme-dark .comments-area .comment-respond textarea {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #272626;
+}
+
+.theme-dark .author-box {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .author-box .author-info ul.post-meta-info li a {
+  color: #ffffff;
+}
+
+.theme-dark .author-box .author-info ul.post-meta-info li a:hover {
+  color: #d72924;
+}
+
+.theme-dark .contact-form .form-group .form-control {
+  background-color: #0e0e0e;
+  color: #ffffff;
+  border-color: #403f3f !important;
+}
+
+.theme-dark .contact-form .form-group .form-control::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .contact-form .form-group .form-control:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .contact-form .form-group .form-control::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .contact-form .form-group .form-control::placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .login-area::before {
+  background: linear-gradient(-9deg, #25262a 0%, #28292e 40%, #3f2b2f 100%);
+}
+
+.theme-dark .login-form {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .login-form::before {
+  background-color: #000000;
+}
+
+.theme-dark .login-form form .form-group label {
+  border-right: 1px solid #706f6f;
+}
+
+.theme-dark .login-form form .form-group .form-control {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #706f6f !important;
+}
+
+.theme-dark .login-form form .form-group .form-control::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .login-form form .form-group .form-control:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .login-form form .form-group .form-control::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .login-form form .form-group .form-control::placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .signup-area::before {
+  background: linear-gradient(-9deg, #25262a 0%, #28292e 40%, #3f2b2f 100%);
+}
+
+.theme-dark .signup-form {
+  background-color: #0e0e0e;
+}
+
+.theme-dark .signup-form::before {
+  background-color: #000000;
+}
+
+.theme-dark .signup-form form .form-group label {
+  border-right: 1px solid #706f6f;
+}
+
+.theme-dark .signup-form form .form-group .form-control {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #706f6f !important;
+}
+
+.theme-dark .signup-form form .form-group .form-control::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .signup-form form .form-group .form-control:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .signup-form form .form-group .form-control::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .signup-form form .form-group .form-control::placeholder {
+  color: #ffffff;
+}
+
+.theme-dark .coming-soon-area::before {
+  background: linear-gradient(-9deg, #25262a 0%, #28292e 40%, #3f2b2f 100%);
+}
+/*# sourceMappingURL=dark.css.map */
