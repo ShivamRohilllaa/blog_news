@@ -39,42 +39,20 @@
                 <div class="single-footer-widget">
                     <h3>Latest News</h3>
                     <div class="footer-latest-news-list">
+                        {% for i in foot_news %}
                         <div class="media latest-news-media align-items-center">
-                            <a href="single-post-2.html"> <img src="assets/img/small-2.jpg" alt="image" /> </a>
+                            <a href=""> <img src="{{i.blog_image.url}}" style="height:50px, width:50px;" alt="image" /> </a>
                             <div class="content">
                                 <ul>
-                                    <li><i class="icofont-calendar"></i> March 22, 2024</li>
+                                    <li><i class="icofont-calendar"></i> {{i.created_at|date}}</li>
                                     <li>
-                                        <a href="single-post-3.html"><i class="icofont-comment"></i> 12</a>
+                                        <a href=""><i class="icofont-comment"></i> 12</a>
                                     </li>
                                 </ul>
-                                <h3><a href="single-post-3.html">Gloost Better They Are With A Featured</a></h3>
+                                <h3><a href="">{{i.title}}</a></h3>
                             </div>
                         </div>
-                        <div class="media latest-news-media align-items-center">
-                            <a href="single-post-2.html"> <img src="assets/img/small-4.jpg" alt="image" /> </a>
-                            <div class="content">
-                                <ul>
-                                    <li><i class="icofont-calendar"></i> March 22, 2024</li>
-                                    <li>
-                                        <a href="single-post-3.html"><i class="icofont-comment"></i> 12</a>
-                                    </li>
-                                </ul>
-                                <h3><a href="single-post-3.html">Gloost Better They Are With A Featured</a></h3>
-                            </div>
-                        </div>
-                        <div class="media latest-news-media align-items-center">
-                            <a href="single-post-3.html"> <img src="assets/img/small-3.jpg" alt="image" /> </a>
-                            <div class="content">
-                                <ul>
-                                    <li><i class="icofont-calendar"></i> March 22, 2024</li>
-                                    <li>
-                                        <a href="single-post-3.html"><i class="icofont-comment"></i> 12</a>
-                                    </li>
-                                </ul>
-                                <h3><a href="single-post-3.html">Gloost Better They Are With A Featured</a></h3>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

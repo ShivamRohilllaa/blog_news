@@ -69,6 +69,7 @@ TEMPLATES = [
                 'blog.context_processors.breaking_news',
                 'blog.context_processors.current_date',
                 'blog.context_processors.top_three_cat',
+                'blog.context_processors.foot_post',
             ],
         },
     },

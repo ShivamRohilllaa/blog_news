@@ -19,6 +19,10 @@ def breaking_news(request):
     b_news = Blog.objects.filter(is_breaking=True)
     return dict(b_news=b_news)
 
+def foot_post(request):
+    foot_news = Blog.objects.filter(status='published').order_by('-created_at')[:3]
+    return dict(foot_news=foot_news)
+
 # def adsense_adsscripts(request):
 #     scripts = adsense_scripts.objects.all()
 #     return dict(scripts=scripts)
