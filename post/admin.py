@@ -11,7 +11,7 @@ class BlogAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
+    list_display = ('name', 'slug', 'description')
     search_fields = ('name',)
 
 @admin.register(Comment)

@@ -4,6 +4,7 @@ from django.utils import timezone
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
@@ -25,6 +26,8 @@ class Blog(models.Model):
     is_latest = models.BooleanField(default=False)
     is_trending = models.BooleanField(default=False)
     is_published = models.BooleanField(default=False)
+    is_main_slider = models.BooleanField(default=False)
+    is_breaking = models.BooleanField(default=False)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='blogs')
     blog_image = models.ImageField(upload_to='blog_images/', blank=True, null=True)

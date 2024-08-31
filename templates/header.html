@@ -40,7 +40,7 @@
     <div class="navbar-area">
         <div class="sinmun-mobile-nav">
             <div class="logo">
-                <a href="index-6.html"><img src="{% static 'img/logo.png' %}" alt="logo" /></a>
+                <a href=""><img src="{% static 'img/logo.png' %}" alt="logo" /></a>
             </div>
         </div>
         <div class="sinmun-nav">
@@ -51,7 +51,7 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a href="#" class="nav-link active">Home</a>
-                                <ul class="dropdown-menu">
+                                {% comment %} <ul class="dropdown-menu">
                                     <li class="nav-item"><a href="index.html" class="nav-link">Home One</a></li>
                                     <li class="nav-item"><a href="index-2.html" class="nav-link">Home Two</a></li>
                                     <li class="nav-item"><a href="index-3.html" class="nav-link">Home Three</a></li>
@@ -59,13 +59,12 @@
                                     <li class="nav-item"><a href="index-5.html" class="nav-link">Home Five</a></li>
                                     <li class="nav-item"><a href="index-6.html" class="nav-link active">Home Six</a></li>
                                     <li class="nav-item"><a href="index-7.html" class="nav-link">Home Seven</a></li>
-                                </ul>
+                                </ul> {% endcomment %}
                             </li>
-                            <li class="nav-item"><a href="post-category-2.html" class="nav-link">Lifestyle</a></li>
-                            <li class="nav-item"><a href="post-category-1.html" class="nav-link">Technology</a></li>
-                            <li class="nav-item"><a href="post-category-5.html" class="nav-link">Video</a></li>
-                            <li class="nav-item"><a href="post-category-3.html" class="nav-link">Travel</a></li>
-                            <li class="nav-item">
+                            {% for i in menu_links %}
+                            <li class="nav-item"><a href="" class="nav-link">{{i.name}}</a></li>
+                            {% endfor %}
+                            {% comment %} <li class="nav-item">
                                 <a href="#" class="nav-link">Pages</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
@@ -102,7 +101,7 @@
                                     <li class="nav-item"><a href="404-error.html" class="nav-link">404 Error</a></li>
                                     <li class="nav-item"><a href="coming-soon.html" class="nav-link">Coming Soon</a></li>
                                 </ul>
-                            </li>
+                            </li> {% endcomment %}
                         </ul>
                         <div class="others-options">
                             <div class="d-inline-block">
@@ -128,15 +127,11 @@
             <div class="breaking-news-content clearfix">
                 <h6 class="breaking-title"><i class="icofont-flash"></i> Breaking News:</h6>
                 <div class="breaking-news-slides owl-carousel owl-theme">
+                    {% for i in breaking_news %}
                     <div class="single-breaking-news">
-                        <p><a href="post-category-1.html">As well as stopping goals, Cristiane Endler is opening doors for other women.</a></p>
+                        <p><a href="">{{i.title}}</a></p>
                     </div>
-                    <div class="single-breaking-news">
-                        <p><a href="post-category-2.html">Netcix cuts out the chill with an integrated personal trainer on running.</a></p>
-                    </div>
-                    <div class="single-breaking-news">
-                        <p><a href="post-category-1.html">As well as stopping goals, Cristiane Endler is opening doors for other women.</a></p>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
