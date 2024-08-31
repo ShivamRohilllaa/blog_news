@@ -32,7 +32,7 @@
                             <a href="https://vimeo.com/log_in" target="_blank"><i class="icofont-vimeo"></i></a>
                         </li>
                     </ul>
-                    <div class="header-date"><i class="icofont-clock-time"></i> Friday, June 15</div>
+                    <div class="header-date"><i class="icofont-clock-time"></i> {{today_date}}</div>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                                     <li class="nav-item"><a href="index-7.html" class="nav-link">Home Seven</a></li>
                                 </ul> {% endcomment %}
                             </li>
-                            {% for i in menu_links %}
+                            {% for i in allcat %}
                             <li class="nav-item"><a href="" class="nav-link">{{i.name}}</a></li>
                             {% endfor %}
                             {% comment %} <li class="nav-item">
@@ -104,9 +104,9 @@
                             </li> {% endcomment %}
                         </ul>
                         <div class="others-options">
-                            <div class="d-inline-block">
+                            {% comment %} <div class="d-inline-block">
                                 <a href="login.html"><i class="icofont-user-alt-5"></i></a>
-                            </div>
+                            </div> {% endcomment %}
                             <div class="header-search d-inline-block">
                                 <div class="nav-search">
                                     <div class="nav-search-button"><i class="icofont-ui-search"></i></div>

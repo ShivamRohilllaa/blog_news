@@ -1,9 +1,15 @@
 from post.models import *
 from django.shortcuts import get_object_or_404
+from datetime import datetime
+
 
 def menu_links(request):
     allcat = Category.objects.all()
     return dict(allcat=allcat)
+
+def top_three_cat(request):
+    top_cat = Category.objects.filter(is_top_three=True)
+    return dict(top_cat=top_cat)
 
 # def related_posts(request):
 #     rel_posts = Post.objects.all().order_by('-date')
@@ -20,3 +26,7 @@ def breaking_news(request):
 # def head_scripts(request):
 #     headmeta = meta.objects.all()
 #     return dict(headmeta=headmeta)
+
+def current_date(request):
+    today_date = datetime.now().strftime("%A, %B %d")
+    return dict(today_date=today_date)

@@ -24,45 +24,26 @@
                 {% endfor %}
             </div>
         </section>
+
         <section class="default-news-area ptb-40">
             <div class="container">
                 <div class="row">
+                    {% for i in top_three_news %}
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         {% comment %} <div class="small-image-ads">
                             <a href="single-post-2.html"><img src="{% static 'img/1-ads.png' %}" alt="image" /></a>
                         </div> {% endcomment %}
                         <div class="single-default-inner-news">
-                            <div class="news-image"><img src="{% static 'img/4.jpg' %}" alt="image" /></div>
+                            <div class="news-image"><img src="{{i.blog_image.url}}" alt="image" /></div>
                             <div class="news-content">
-                                <h3>Banning Winter Holiy As Islands Offers</h3>
-                                <span><i class="icofont-calendar"></i> March 22, 2024</span>
+                                <h3>{{i.title}}</h3>
+                                <span><i class="icofont-calendar"></i> {{i.created_at|date}}</span>
                             </div>
-                            <a href="post-category-3.html" class="link-overlay"></a>
-                            <div class="tags bg-4"><a href="post-category-4.html">Sports</a></div>
+                            <a href="" class="link-overlay"></a>
+                            <div class="tags bg-4"><a href="post-category-4.html">{{i.category.name}}</a></div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="single-default-inner-news">
-                            <div class="news-image"><img src="{% static 'img/5.jpg' %}" alt="image" /></div>
-                            <div class="news-content">
-                                <h3>Gloost Better They Are With A Featured</h3>
-                                <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                            </div>
-                            <a href="post-category-3.html" class="link-overlay"></a>
-                            <div class="tags bg-5"><a href="post-category-3.html">Sports</a></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="single-default-inner-news">
-                            <div class="news-image"><img src="{% static 'img/5.jpg' %}" alt="image" /></div>
-                            <div class="news-content">
-                                <h3>Gloost Better They Are With A Featured</h3>
-                                <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                            </div>
-                            <a href="post-category-3.html" class="link-overlay"></a>
-                            <div class="tags bg-5"><a href="post-category-3.html">Sports</a></div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -79,50 +60,19 @@
                         <div class="section-title"><h2>Most Popular</h2></div>
                         <div class="row">
                             <div class="popular-news-slides owl-carousel owl-theme">
+                                {% for i in popular_news %}
                                 <div class="col-lg-12 col-md-12">
                                     <div class="single-popular-news">
-                                        <div class="news-image"><img src="{% static 'img/6.jpg' %}" alt="image" /></div>
+                                        <div class="news-image"><img src="{{i.blog_image.url}}" alt="image" /></div>
                                         <div class="news-content">
-                                            <h3>Create the Perfect Logo for your Website</h3>
-                                            <span><i class="icofont-calendar"></i> March 22, 2024</span>
+                                            <h3>{{i.title}}</h3>
+                                            <span><i class="icofont-calendar"></i>{{i.created_at|date}}</span>
                                         </div>
                                         <a href="post-category-3.html" class="link-overlay"></a>
-                                        <div class="tags bg-2"><a href="post-category-2.html">Sports</a></div>
+                                        <div class="tags bg-2"><a href="post-category-2.html">{{i.category.name}}</a></div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="single-popular-news">
-                                        <div class="news-image"><img src="{% static 'img/7.jpg' %}" alt="image" /></div>
-                                        <div class="news-content">
-                                            <h3>Take the Tour to Explore the New Header Manager</h3>
-                                            <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                                        </div>
-                                        <a href="post-category-3.html" class="link-overlay"></a>
-                                        <div class="tags bg-5"><a href="post-category-3.html">Sports</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="single-popular-news">
-                                        <div class="news-image"><img src="{% static 'img/8.jpg' %}" alt="image" /></div>
-                                        <div class="news-content">
-                                            <h3>Sinmun theme is part of the big WPML family</h3>
-                                            <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                                        </div>
-                                        <a href="post-category-3.html" class="link-overlay"></a>
-                                        <div class="tags bg-3"><a href="post-category-2.html">Sports</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="single-popular-news">
-                                        <div class="news-image"><img src="{% static 'img/1.jpg' %}" alt="image" /></div>
-                                        <div class="news-content">
-                                            <h3>Copy – Paste the Style of your elements in Newspaper</h3>
-                                            <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                                        </div>
-                                        <a href="post-category-3.html" class="link-overlay"></a>
-                                        <div class="tags bg-4"><a href="post-category-4.html">Sports</a></div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -130,7 +80,6 @@
             </div>
         </section>
         
-
         <section class="international-news-area pb-40">
             <div class="container">
                 <div class="row">
@@ -138,40 +87,19 @@
                         <div class="section-title"><h2>International</h2></div>
                         <div class="international-news-inner">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="single-international-news">
-                                        <div class="news-image"><img src="{% static 'img/6.jpg' %}" alt="image" /></div>
-                                        <div class="news-content">
-                                            <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                                            <h3><a href="single-post-3.html">Gloost Better They Are With A Featured</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% for i in international_news %}
                                 <div class="col-lg-6">
                                     <div class="international-news-list">
                                         <div class="media news-media align-items-center">
-                                            <a href="single-post-3.html"> <img src="{% static 'img/small-1.jpg' %}" alt="image" /> </a>
+                                            <img src="{{i.blog_image.url}}" alt="image" style="width: 200px; height: 150px; object-fit: cover; border-radius: 4px;" />
                                             <div class="content">
-                                                <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                                                <h3><a href="single-post-1.html">Introducing the New 404 Page Templates</a></h3>
-                                            </div>
-                                        </div>
-                                        <div class="media news-media align-items-center">
-                                            <a href="single-post-2.html"> <img src="{% static 'img/small-2.jpg' %}" alt="image" /> </a>
-                                            <div class="content">
-                                                <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                                                <h3><a href="single-post-2.html">Newspaper Theme: What’s new in v.9</a></h3>
-                                            </div>
-                                        </div>
-                                        <div class="media news-media align-items-center">
-                                            <a href="single-post-3.html"> <img src="{% static 'img/small-3.jpg' %}" alt="image" /> </a>
-                                            <div class="content">
-                                                <span><i class="icofont-calendar"></i> March 22, 2024</span>
-                                                <h3><a href="single-post-4.html">Tricks to Boost your WordPress Site’s Traffic</a></h3>
+                                                <span><i class="icofont-calendar"></i>{{i.created_at|date}}</span>
+                                                <h3><a href="">{{i.title}}</a></h3>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -198,149 +126,36 @@
                 </div>
             </div>
         </section>
+
         <section class="hot-news-area pb-40">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="row">
+                            {% for i in top_cat %}
                             <div class="col-lg-4 col-md-6">
                                 <div class="health-lifestyle-news">
-                                    <div class="section-title"><h2>Health & Lifestyle</h2></div>
+                                    <div class="section-title"><h2>{{i.name}}</h2></div>
                                     <div class="health-lifestyle-news-slides owl-carousel owl-theme">
+                                        {% for j in i.blogs.all %}
                                         <div class="single-health-lifestyle-news">
                                             <div class="news-image">
-                                                <a href="single-post-3.html"><img src="{% static 'img/8.jpg' %}" alt="image" /></a>
+                                                <a href=""><img src="{{j.blog_image.url}}" alt="image" /></a>
                                             </div>
                                             <div class="news-content">
                                                 <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
+                                                    <li><i class="icofont-calendar"></i> {{j.created_at|date}}</li>
+                                                    <li><i class="icofont-speech-comments"></i> <a href="">50</a></li>
                                                 </ul>
-                                                <h3><a href="single-post-1.html">Disabled People Must Be Front And Centre On TV</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
+                                                <h3><a href="">{{j.title}}</a></h3>
+                                                <p>{{ j.content|truncatechars:100 }}</p>
                                             </div>
                                         </div>
-                                        <div class="single-health-lifestyle-news">
-                                            <div class="news-image">
-                                                <a href="single-post-3.html"><img src="{% static 'img/7.jpg' %}" alt="image" /></a>
-                                            </div>
-                                            <div class="news-content">
-                                                <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
-                                                </ul>
-                                                <h3><a href="single-post-1.html">Disabled People Must Be Front And Centre On TV</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
-                                            </div>
-                                        </div>
-                                        <div class="single-health-lifestyle-news">
-                                            <div class="news-image">
-                                                <a href="single-post-4.html"><img src="{% static 'img/6.jpg' %}" alt="image" /></a>
-                                            </div>
-                                            <div class="news-content">
-                                                <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
-                                                </ul>
-                                                <h3><a href="single-post-1.html">Disabled People Must Be Front And Centre On TV</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="politics-news">
-                                    <div class="section-title"><h2>Politics</h2></div>
-                                    <div class="politics-news-slides owl-carousel owl-theme">
-                                        <div class="single-politics-news">
-                                            <div class="news-image">
-                                                <a href="single-post-4.html"><img src="{% static 'img/6.jpg' %}" alt="image" /></a>
-                                            </div>
-                                            <div class="news-content">
-                                                <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
-                                                </ul>
-                                                <h3><a href="single-post-2.html">The New-Style GCSEs Show Why Politicians.</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
-                                            </div>
-                                        </div>
-                                        <div class="single-politics-news">
-                                            <div class="news-image">
-                                                <a href="single-post-3.html"><img src="{% static 'img/7.jpg' %}" alt="image" /></a>
-                                            </div>
-                                            <div class="news-content">
-                                                <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
-                                                </ul>
-                                                <h3><a href="single-post-1.html">Disabled People Must Be Front And Centre On TV</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
-                                            </div>
-                                        </div>
-                                        <div class="single-politics-news">
-                                            <div class="news-image">
-                                                <a href="single-post-2.html"><img src="{% static 'img/8.jpg' %}" alt="image" /></a>
-                                            </div>
-                                            <div class="news-content">
-                                                <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
-                                                </ul>
-                                                <h3><a href="single-post-1.html">The New-Style GCSEs Show Why Politicians.</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="politics-news">
-                                    <div class="section-title"><h2>Politics</h2></div>
-                                    <div class="politics-news-slides owl-carousel owl-theme">
-                                        <div class="single-politics-news">
-                                            <div class="news-image">
-                                                <a href="single-post-4.html"><img src="{% static 'img/6.jpg' %}" alt="image" /></a>
-                                            </div>
-                                            <div class="news-content">
-                                                <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
-                                                </ul>
-                                                <h3><a href="single-post-2.html">The New-Style GCSEs Show Why Politicians.</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
-                                            </div>
-                                        </div>
-                                        <div class="single-politics-news">
-                                            <div class="news-image">
-                                                <a href="single-post-3.html"><img src="{% static 'img/7.jpg' %}" alt="image" /></a>
-                                            </div>
-                                            <div class="news-content">
-                                                <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
-                                                </ul>
-                                                <h3><a href="single-post-1.html">Disabled People Must Be Front And Centre On TV</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
-                                            </div>
-                                        </div>
-                                        <div class="single-politics-news">
-                                            <div class="news-image">
-                                                <a href="single-post-2.html"><img src="{% static 'img/8.jpg' %}" alt="image" /></a>
-                                            </div>
-                                            <div class="news-content">
-                                                <ul>
-                                                    <li><i class="icofont-calendar"></i> March 25, 2024</li>
-                                                    <li><i class="icofont-speech-comments"></i> <a href="single-post-1.html">50</a></li>
-                                                </ul>
-                                                <h3><a href="single-post-1.html">The New-Style GCSEs Show Why Politicians.</a></h3>
-                                                <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                     {% comment %} <div class="col-lg-4 col-md-12">
@@ -353,7 +168,7 @@
             </div>
         </section>
         
-        <section class="gallery-news-area ptb-40">
+        {% comment %} <section class="gallery-news-area ptb-40">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-12">
@@ -421,9 +236,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> {% endcomment %}
         
-        <section class="all-news-area ptb-40">
+        {% comment %} <section class="all-news-area ptb-40">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
@@ -515,7 +330,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> {% endcomment %}
         
         <section class="more-news-area">
             <div class="container">
@@ -523,58 +338,21 @@
                     <div class="section-title"><h2>More News</h2></div>
                     <div class="row">
                         <div class="more-news-slides owl-carousel owl-theme">
+                            {% for i in more_news %}
                             <div class="col-lg-12 col-md-12">
                                 <div class="single-more-news">
-                                    <img src="{% static 'img/1.jpg' %}" alt="image" />
+                                    <img src="{{i.blog_image.url}}" alt="image" />
                                     <div class="news-content">
                                         <ul>
-                                            <li><i class="icofont-user-suited"></i> by <a href="author.html">John Smith</a></li>
-                                            <li><i class="icofont-calendar"></i> March 22, 2024</li>
+                                            <li><i class="icofont-user-suited"></i> by <a href="">Admin</a></li>
+                                            <li><i class="icofont-calendar"></i>{{i.created_at|date}}</li>
                                         </ul>
-                                        <h3><a href="single-post-4.html">As well as stopping goals, Cristiane Endler is opening doors.</a></h3>
+                                        <h3><a href="">{{i.title}}</a></h3>
                                     </div>
-                                    <div class="tags bg-2"><a href="post-category-2.html">Sports</a></div>
+                                    <div class="tags bg-2"><a href="">{{i.category.name}}</a></div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="single-more-news">
-                                    <img src="{% static 'img/2.jpg' %}" alt="image" />
-                                    <div class="news-content">
-                                        <ul>
-                                            <li><i class="icofont-user-suited"></i> by <a href="author.html">John Smith</a></li>
-                                            <li><i class="icofont-calendar"></i> March 22, 2024</li>
-                                        </ul>
-                                        <h3><a href="single-post-4.html">As well as stopping goals, Cristiane Endler is opening doors.</a></h3>
-                                    </div>
-                                    <div class="tags bg-3"><a href="post-category-2.html">Sports</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="single-more-news">
-                                    <img src="{% static 'img/3.jpg' %}" alt="image" />
-                                    <div class="news-content">
-                                        <ul>
-                                            <li><i class="icofont-user-suited"></i> by <a href="author.html">John Smith</a></li>
-                                            <li><i class="icofont-calendar"></i> March 22, 2024</li>
-                                        </ul>
-                                        <h3><a href="single-post-4.html">As well as stopping goals, Cristiane Endler is opening doors.</a></h3>
-                                    </div>
-                                    <div class="tags bg-4"><a href="post-category-4.html">Sports</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="single-more-news">
-                                    <img src="{% static 'img/4.jpg' %}" alt="image" />
-                                    <div class="news-content">
-                                        <ul>
-                                            <li><i class="icofont-user-suited"></i> by <a href="author.html">John Smith</a></li>
-                                            <li><i class="icofont-calendar"></i> March 22, 2024</li>
-                                        </ul>
-                                        <h3><a href="single-post-4.html">As well as stopping goals, Cristiane Endler is opening doors.</a></h3>
-                                    </div>
-                                    <div class="tags bg-5"><a href="post-category-3.html">Sports</a></div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
