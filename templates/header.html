@@ -46,11 +46,11 @@
         <div class="sinmun-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="index-6.html"><img src="{% static 'img/logo.png' %}" alt="logo" /></a>
+                    <a class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" alt="logo" /></a>
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">Home</a>
+                                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
                                 {% comment %} <ul class="dropdown-menu">
                                     <li class="nav-item"><a href="index.html" class="nav-link">Home One</a></li>
                                     <li class="nav-item"><a href="index-2.html" class="nav-link">Home Two</a></li>
@@ -62,7 +62,9 @@
                                 </ul> {% endcomment %}
                             </li>
                             {% for i in allcat %}
-                            <li class="nav-item"><a href="" class="nav-link">{{i.name}}</a></li>
+                            <li class="nav-item"><a href="{% url 'category_detail' i.slug %}" class="nav-link {% if request.path == i.get_absolute_url %}active{% endif %}">
+                                {{ i.name }}
+                            </a></li>
                             {% endfor %}
                             {% comment %} <li class="nav-item">
                                 <a href="#" class="nav-link">Pages</a>
@@ -127,9 +129,9 @@
             <div class="breaking-news-content clearfix">
                 <h6 class="breaking-title"><i class="icofont-flash"></i> Breaking News:</h6>
                 <div class="breaking-news-slides owl-carousel owl-theme">
-                    {% for i in breaking_news %}
+                    {% for i in b_news %}
                     <div class="single-breaking-news">
-                        <p><a href="">{{i.title}}</a></p>
+                        <p><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{i.title}}</a></p>
                     </div>
                     {% endfor %}
                 </div>

@@ -8,11 +8,11 @@
                 <div class="col-lg-12">
                     <div class="single-blog-box">
                         <div class="blog-image">
-                            <a href="single-post-2.html"><img src="{{i.blog_image.url}}" alt="img" /></a>
+                            <a href="{% url 'blog_detail' i.category.slug i.seo_slug %}"><img src="{{i.blog_image.url}}" alt="img" /></a>
                         </div>
                         <div class="blog-post-content">
-                            <div class="tags"><a href="post-category-3.html">{{i.category.name}}</a></div>
-                            <h3><a href="">{{i.title}}</a></h3>
+                            <div class="tags"><a href="{% url 'category_detail' i.category.slug %}">{{i.category.name}}</a></div>
+                            <h3><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{i.title}}</a></h3>
                             <ul>
                                 <li><i class="icofont-ui-calendar"></i> {{i.created_at|date}}</li>
                                 <li><i class="icofont-ui-user"></i> By <a href="">{{i.author}}</a></li>
@@ -39,8 +39,8 @@
                                 <h3>{{i.title}}</h3>
                                 <span><i class="icofont-calendar"></i> {{i.created_at|date}}</span>
                             </div>
-                            <a href="" class="link-overlay"></a>
-                            <div class="tags bg-4"><a href="post-category-4.html">{{i.category.name}}</a></div>
+                            <a href="{% url 'blog_detail' i.category.slug i.seo_slug %}" class="link-overlay"></a>
+                            <div class="tags bg-4"><a href="{% url 'category_detail' i.category.slug %}">{{i.category.name}}</a></div>
                         </div>
                     </div>
                     {% endfor %}
@@ -68,8 +68,8 @@
                                             <h3>{{i.title}}</h3>
                                             <span><i class="icofont-calendar"></i>{{i.created_at|date}}</span>
                                         </div>
-                                        <a href="post-category-3.html" class="link-overlay"></a>
-                                        <div class="tags bg-2"><a href="post-category-2.html">{{i.category.name}}</a></div>
+                                        <a href="{% url 'blog_detail' i.category.slug i.seo_slug %}" class="link-overlay"></a>
+                                        <div class="tags bg-2"><a href="{% url 'category_detail' i.category.slug %}">{{i.category.name}}</a></div>
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -84,7 +84,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <div class="section-title"><h2>International</h2></div>
+                        <div class="section-title"><h2></h2></div>
                         <div class="international-news-inner">
                             <div class="row">
                                 {% for i in international_news %}
@@ -94,7 +94,7 @@
                                             <img src="{{i.blog_image.url}}" alt="image" style="width: 200px; height: 150px; object-fit: cover; border-radius: 4px;" />
                                             <div class="content">
                                                 <span><i class="icofont-calendar"></i>{{i.created_at|date}}</span>
-                                                <h3><a href="">{{i.title}}</a></h3>
+                                                <h3><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{i.title}}</a></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -140,14 +140,14 @@
                                         {% for j in i.blogs.all %}
                                         <div class="single-health-lifestyle-news">
                                             <div class="news-image">
-                                                <a href=""><img src="{{j.blog_image.url}}" alt="image" /></a>
+                                                <a href="{% url 'blog_detail' j.category.slug j.seo_slug %}"><img src="{{j.blog_image.url}}" alt="image" /></a>
                                             </div>
                                             <div class="news-content">
                                                 <ul>
                                                     <li><i class="icofont-calendar"></i> {{j.created_at|date}}</li>
                                                     <li><i class="icofont-speech-comments"></i> <a href="">50</a></li>
                                                 </ul>
-                                                <h3><a href="">{{j.title}}</a></h3>
+                                                <h3><a href="{% url 'blog_detail' j.category.slug j.seo_slug %}">{{j.title}}</a></h3>
                                                 <p>{{ j.content|truncatechars:100 }}</p>
                                             </div>
                                         </div>
@@ -331,33 +331,6 @@
                 </div>
             </div>
         </section> {% endcomment %}
-        
-        <section class="more-news-area">
-            <div class="container">
-                <div class="more-news-inner">
-                    <div class="section-title"><h2>More News</h2></div>
-                    <div class="row">
-                        <div class="more-news-slides owl-carousel owl-theme">
-                            {% for i in more_news %}
-                            <div class="col-lg-12 col-md-12">
-                                <div class="single-more-news">
-                                    <img src="{{i.blog_image.url}}" alt="image" />
-                                    <div class="news-content">
-                                        <ul>
-                                            <li><i class="icofont-user-suited"></i> by <a href="">Admin</a></li>
-                                            <li><i class="icofont-calendar"></i>{{i.created_at|date}}</li>
-                                        </ul>
-                                        <h3><a href="">{{i.title}}</a></h3>
-                                    </div>
-                                    <div class="tags bg-2"><a href="">{{i.category.name}}</a></div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 {% include "footer.html" %}
 {% endblock body %}

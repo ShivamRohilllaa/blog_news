@@ -1,0 +1,295 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+{% include "header.html" %}
+        <!-- Start News Details Area -->
+        <section class="news-details-area pb-40">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="icofont-home"></i> Home</a></li>
+                    <li><i class="icofont-rounded-right"></i></li>
+                    <li><a href="{% url 'category_detail' category.slug %}">{{category.name}}</a></li>
+                    <li><i class="icofont-rounded-right"></i></li>
+                    <li>{{blog_post.title}}</li>
+                </ul>
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="news-details">
+                            <div class="article-img">
+                                <img src="{{blog_post.blog_image.url}}" alt="image">
+                            </div>
+
+                            <div class="article-content">
+                                <ul class="entry-meta">
+                                    <li><i class="icofont-user"></i> <a href="">Eleco</a></li>
+                                    {% comment %} <li><i class="icofont-eye-alt"></i> 1040</li> {% endcomment %}
+                                    <li><i class="icofont-calendar"></i> {{blog_post.created_at|date}}</li>
+                                </ul>
+
+                                <p>{{blog_post.content}}<p>
+                                <ul class="category">
+                                    <li><span>Tags:</span></li>
+                                    <li><a href="{% url 'category_detail' category.slug %}">{{category.name}}</a></li>
+                                    {% comment %} <li><a href="post-category-1.html">IT</a></li>
+                                    <li><a href="post-category-3.html">Tips</a></li>
+                                    <li><a href="post-category-1.html">Design</a></li> {% endcomment %}
+                                </ul>
+                            </div>
+                        </div>
+{% comment %} 
+                        <div class="post-controls-buttons">
+                            <div>
+                                <a href="single-post-1.html">Prev Post</a>
+                            </div>
+
+                            <div>
+                                <a href="single-post-1.html">Next Post</a>
+                            </div>
+                        </div> {% endcomment %}
+
+                        <div class="comments-area">
+                            <h3 class="comments-title">2 Comments:</h3>
+
+                            <ol class="comment-list">
+                                <li class="comment">
+                                    <article class="comment-body">
+                                        <footer class="comment-meta">
+                                            <div class="comment-author vcard">
+                                                <img src="assets/img/author1.jpg" class="avatar" alt="image">
+                                                <b class="fn">Sinmun</b>
+                                                <span class="says">says:</span>
+                                            </div>
+
+                                            <div class="comment-metadata">
+                                                <a href="single-post-1.html">
+                                                    <time>April 24, 2024 at 10:59 am</time>
+                                                </a>
+                                            </div>
+                                        </footer>
+
+                                        <div class="comment-content">
+                                            <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                        </div>
+
+                                        <div class="reply">
+                                            <a href="single-post-1.html" class="comment-reply-link">Reply</a>
+                                        </div>
+                                    </article>
+
+                                    <ol class="children">
+                                        <li class="comment">
+                                            <article class="comment-body">
+                                                <footer class="comment-meta">
+                                                    <div class="comment-author vcard">
+                                                        <img src="assets/img/author1.jpg" class="avatar" alt="image">
+                                                        <b class="fn">Sinmun</b>
+                                                        <span class="says">says:</span>
+                                                    </div>
+        
+                                                    <div class="comment-metadata">
+                                                        <a href="single-post-1.html">
+                                                            <time>April 24, 2024 at 10:59 am</time>
+                                                        </a>
+                                                    </div>
+                                                </footer>
+        
+                                                <div class="comment-content">
+                                                    <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                </div>
+        
+                                                <div class="reply">
+                                                    <a href="single-post-1.html" class="comment-reply-link">Reply</a>
+                                                </div>
+                                            </article>
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li class="comment">
+                                    <article class="comment-body">
+                                        <footer class="comment-meta">
+                                            <div class="comment-author vcard">
+                                                <img src="assets/img/author1.jpg" class="avatar" alt="image">
+                                                <b class="fn">Sinmun</b>
+                                                <span class="says">says:</span>
+                                            </div>
+
+                                            <div class="comment-metadata">
+                                                <a href="single-post-1.html">
+                                                    <time>April 24, 2024 at 10:59 am</time>
+                                                </a>
+                                            </div>
+                                        </footer>
+
+                                        <div class="comment-content">
+                                            <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                        </div>
+
+                                        <div class="reply">
+                                            <a href="single-post-1.html" class="comment-reply-link">Reply</a>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ol>
+
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">Leave a Reply</h3>
+
+                                <form class="comment-form">
+                                    <p class="comment-notes">
+                                        <span id="email-notes">Your email address will not be published.</span>
+                                         Required fields are marked 
+                                        <span class="required">*</span>
+                                    </p>
+                                    <p class="comment-form-comment">
+                                        <label for="comment">Comment</label>
+                                        <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
+                                    </p>
+                                    <p class="comment-form-author">
+                                        <label for="name">Name <span class="required">*</span></label>
+                                        <input type="text" id="author" name="author" required="required">
+                                    </p>
+                                    <p class="comment-form-email">
+                                        <label for="email">Email <span class="required">*</span></label>
+                                        <input type="email" id="email" name="email" required="required">
+                                    </p>
+                                    <p class="comment-form-url">
+                                        <label for="url">Website</label>
+                                        <input type="url" id="url" name="url">
+                                    </p>
+                                    <p class="comment-form-cookies-consent">
+                                        <input type="checkbox" value="yes" name="wp-comment-cookies-consent" id="wp-comment-cookies-consent">
+                                        <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
+                                    </p>
+                                    <p class="form-submit">
+                                        <input type="submit" name="submit" id="submit" class="submit" value="Post Comment">
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <aside class="widget-area" id="secondary">
+                            <section class="widget widget_search">
+                                <form class="search-form">
+                                    <label>
+                                        <span class="screen-reader-text">Search for:</span>
+                                        <input type="search" class="search-field" placeholder="Search here...">
+                                    </label>
+                                    <input type="submit" class="search-submit" value="Search">
+                                </form>
+                            </section>
+
+                            <section class="widget widget_recent_entries">
+                                <h3 class="widget-title">Recent Posts</h3>
+
+                                <ul>
+                                    <li><a href="single-post-2.html">How to Become a Successful Entry Level UX Designer</a></li>
+                                    <li><a href="single-post-2.html">How to start your business as an entrepreneur</a></li>
+                                    <li><a href="single-post-4.html">How to be a successful entrepreneur</a></li>
+                                    <li><a href="single-post-2.html">How to Become a Successful Entry Level UX Designer</a></li>
+                                    <li><a href="single-post-4.html">Protect your workplace from cyber attacks</a></li>
+                                </ul>
+                            </section>
+{% comment %} 
+                            <section class="widget widget_recent_comments">
+                                <h3 class="widget-title">Recent Comments</h3>
+
+                                <ul>
+                                    <li>
+                                        <span class="comment-author-link">
+                                            <a href="single-post-1.html">A WordPress Commenter</a>
+                                        </span>
+                                        on
+                                        <a href="single-post-1.html">Hello world!</a>
+                                    </li>
+                                    <li>
+                                        <span class="comment-author-link">
+                                            <a href="single-post-1.html">Sinmun</a>
+                                        </span>
+                                        on
+                                        <a href="single-post-1.html">Hello world!</a>
+                                    </li>
+                                    <li>
+                                        <span class="comment-author-link">
+                                            <a href="single-post-1.html">Wordpress</a>
+                                        </span>
+                                        on
+                                        <a href="single-post-1.html">Hello world!</a>
+                                    </li>
+                                    <li>
+                                        <span class="comment-author-link">
+                                            <a href="single-post-1.html">A WordPress Commenter</a>
+                                        </span>
+                                        on
+                                        <a href="single-post-1.html">Hello world!</a>
+                                    </li>
+                                    <li>
+                                        <span class="comment-author-link">
+                                            <a href="single-post-1.html">Sinmun</a>
+                                        </span>
+                                        on
+                                        <a href="single-post-1.html">Hello world!</a>
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <section class="widget widget_archive">
+                                <h3 class="widget-title">Archives</h3>
+
+                                <ul>
+                                    <li><a href="gallery-1.html">May 2024</a></li>
+                                    <li><a href="gallery-2.html">April 2024</a></li>
+                                    <li><a href="gallery-1.html">June 2024</a></li>
+                                </ul>
+                            </section> {% endcomment %}
+
+                            <section class="widget widget_categories">
+                                <h3 class="widget-title">Categories</h3>
+
+                                <ul>
+                                    <li><a href="post-category-3.html">Business</a></li>
+                                    <li><a href="post-category-3.html">Privacy</a></li>
+                                    <li><a href="post-category-3.html">Technology</a></li>
+                                    <li><a href="post-category-3.html">Tips</a></li>
+                                    <li><a href="post-category-1.html">Uncategorized</a></li>
+                                </ul>
+                            </section>
+
+                            <section class="widget widget_meta">
+                                <h3 class="widget-title">Meta</h3>
+
+                                <ul>
+                                    <li><a href="login.html">Log in</a></li>
+                                    <li><a href="contact.html">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+                                    <li><a href="single-post-2.html">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+                                    <li><a href="single-post-2.html">WordPress.org</a></li>
+                                </ul>
+                            </section>
+
+                            <section class="widget widget_tag_cloud">
+                                <h3 class="widget-title">Tags</h3>
+
+                                <div class="tagcloud">
+                                    <a href="post-category-1.html">Business <span class="tag-link-count"> (3)</span></a>
+                                    <a href="post-category-2.html">Design <span class="tag-link-count"> (3)</span></a>
+                                    <a href="post-category-3.html">IT <span class="tag-link-count"> (2)</span></a>
+                                    <a href="post-category-3.html">Marketing <span class="tag-link-count"> (2)</span></a>
+                                    <a href="post-category-6.html">Mobile <span class="tag-link-count"> (1)</span></a>
+                                    <a href="post-category-4.html">Protect <span class="tag-link-count"> (1)</span></a>
+                                    <a href="post-category-5.html">Startup <span class="tag-link-count"> (1)</span></a>
+                                    <a href="post-category-3.html">Tips <span class="tag-link-count"> (2)</span></a>
+                                </div>
+                            </section>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End News Details Area -->
+
+{% include "more_news.html" %}
+{% include "footer.html" %}
+{% endblock body %}

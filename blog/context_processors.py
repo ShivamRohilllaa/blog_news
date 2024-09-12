@@ -23,6 +23,10 @@ def foot_post(request):
     foot_news = Blog.objects.filter(status='published').order_by('-created_at')[:3]
     return dict(foot_news=foot_news)
 
+def more_news(request):
+    more_news = Blog.objects.filter(status='published').order_by('-created_at')[:3]
+    return dict(more_news=more_news)
+
 # def adsense_adsscripts(request):
 #     scripts = adsense_scripts.objects.all()
 #     return dict(scripts=scripts)

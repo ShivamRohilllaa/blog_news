@@ -1,0 +1,28 @@
+{% load static %}
+        
+<section class="more-news-area">
+    <div class="container">
+        <div class="more-news-inner">
+            <div class="section-title"><h2>More News</h2></div>
+            <div class="row">
+                <div class="more-news-slides owl-carousel owl-theme">
+                    {% for i in more_news %}
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single-more-news">
+                            <img src="{{i.blog_image.url}}" alt="image" />
+                            <div class="news-content">
+                                <ul>
+                                    <li><i class="icofont-user-suited"></i> by <a href="">Admin</a></li>
+                                    <li><i class="icofont-calendar"></i>{{i.created_at|date}}</li>
+                                </ul>
+                                <h3><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{i.title}}</a></h3>
+                            </div>
+                            <div class="tags bg-2"><a href="{% url 'category_detail' i.category.slug %}">{{i.category.name}}</a></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

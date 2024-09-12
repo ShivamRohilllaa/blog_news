@@ -1,0 +1,62 @@
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+./__pycache__/
+# /media
+# /static
+
+# Environment
+.env
+.venv
+.env/
+venv/
+ENV/
+env/
+*.env
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Pyenv
+.python-version
+
+# MyPy
+.mypy_cache/
+
+# Coverage
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Django migrations
+*/migrations/*.py
+*/migrations/*.pyc
+*/migrations/__pycache__/
+
+# static files
+# staticfiles/
+
+# Backup files
+*.bak
+*.swp
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Other
+*.git
