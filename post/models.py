@@ -53,7 +53,7 @@ class Blog(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('blog_detail', args=[self.category.slug, self.slug])
+        return reverse('blog_detail', args=[self.category.slug, self.seo_slug])
     
     def save(self, *args, **kwargs):
         # Auto-generate SEO title and slug if not provided
