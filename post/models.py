@@ -65,9 +65,32 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    content = models.TextField()
+    name = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
-        return f'Comment by {self.user.username} on {self.blog.title}'
+        return f'Comment by {self.name} on {self.blog.title}'
+
+class SocialMedia(models.Model):
+    facebook = models.TextField(blank=True, null=True)
+    twitter = models.TextField(blank=True, null=True)
+    instagram = models.TextField(blank=True, null=True)
+    gmail = models.TextField(blank=True, null=True)
+    
+    def __str__(self):
+        return str(self.id)
+
+class WebAddress(models.Model):
+    about = models.TextField(blank=True, null=True)        
+    address_1 = models.TextField(blank=True, null=True)        
+    address_2 = models.TextField(blank=True, null=True)        
+    address_3 = models.TextField(blank=True, null=True)        
+    state = models.TextField(blank=True, null=True)        
+    city = models.TextField(blank=True, null=True)        
+    zipcode = models.TextField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.address_1
+        

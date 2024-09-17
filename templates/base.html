@@ -15,6 +15,9 @@
         <link rel="stylesheet" href="{% static "css/responsive.css" %}"/>
         <title>News Magazine</title>
         <link rel="icon" type="image/png" href="{% static "img/favicon.png" %}" />
+        {% block style %}
+        
+        {% endblock style %}
     </head>
     <body>
         {% block body %}
@@ -32,6 +35,26 @@
         <script src="{% static "js/contact-form-script.js" %}"></script>
         <script src="{% static "js/jquery.ajaxchimp.min.js" %}"></script>
         <script src="{% static "js/main.js" %}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                // Trigger AJAX search when the user types in the search field
+                $('#searchInput').on('keyup', function() {
+                    var query = $(this).val();  // Get the search query
+        
+                    $.ajax({
+                        url: '{% url "search_blog_posts" %}',  // The URL of the view that handles the search
+                        data: {
+                            'q': query  // Send the search query to the server
+                        },
+                        success: function(data) {
+                            // Update the #search-results element with the new results from the AJAX response
+                            $('#search-results').html(data.html);  // 'data.html' is the partial HTML rendered by the Django view
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 
 </html>

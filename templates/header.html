@@ -4,34 +4,30 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-8">
-                    <div class="city-temperature">
+                    {% comment %} <div class="city-temperature">
                         <i class="icofont-ui-weather"></i> <span>28.5<sup>c</sup></span> <b>Dubai</b>
-                    </div>
-                    <ul class="top-nav">
+                    </div> {% endcomment %}
+                    {% comment %} <ul class="top-nav">
                         <li><a href="">Blog</a></li>
                         <li><a href="">Forums</a></li>
                         <li><a href="">Contact</a></li>
                         <li><a href="">Advertisement</a></li>
-                    </ul>
+                    </ul> {% endcomment %}
                 </div>
                 <div class="col-lg-6 col-md-4 text-end">
+                    {% for i in social_links %}
                     <ul class="top-social">
                         <li>
-                            <a href="https://www.facebook.com/login/" target="_blank"><i class="icofont-facebook"></i></a>
+                            <a href="{{i.facebook}}" target="_blank"><i class="icofont-facebook"></i></a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/login/" target="_blank"><i class="icofont-twitter"></i></a>
+                            <a href="{{i.twitter}}" target="_blank"><i class="icofont-twitter"></i></a>
                         </li>
                         <li>
-                           <a href="https://www.instagram.com/accounts/login/" target="_blank"><i class="icofont-instagram"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.pinterest.com/login/" target="_blank"><i class="icofont-pinterest"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://vimeo.com/log_in" target="_blank"><i class="icofont-vimeo"></i></a>
+                            <a href="{{i.instagram}}" target="_blank"><i class="icofont-instagram"></i></a>
                         </li>
                     </ul>
+                    {% endfor %}
                     <div class="header-date"><i class="icofont-clock-time"></i> {{today_date}}</div>
                 </div>
             </div>

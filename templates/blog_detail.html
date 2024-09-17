@@ -48,7 +48,7 @@
                             </div>
                         </div> {% endcomment %}
 
-                        <div class="comments-area">
+                        {% comment %} <div class="comments-area">
                             <h3 class="comments-title">2 Comments:</h3>
 
                             <ol class="comment-list">
@@ -167,12 +167,117 @@
                                     </p>
                                 </form>
                             </div>
+                        </div> {% endcomment %}
+                        <div class="comments-area">
+                            <h3 class="comments-title">{{ comments.count }} Comments:</h3>
+                        
+                            <ol class="comment-list">
+                                {% for comment in comments %}
+                                    <li class="comment">
+                                        <article class="comment-body">
+                                            <footer class="comment-meta">
+                                                <div class="comment-author vcard">
+                                                    <img src="{% static 'img/author1.jpg' %}" class="avatar" alt="image">
+                                                    <b class="fn">{{ comment.user.username }}</b>
+                                                    <span class="says">says:</span>
+                                                </div>
+                        
+                                                <div class="comment-metadata">
+                                                    <a href="#">
+                                                        <time>{{ comment.created_at|date:"F j, Y \a\t g:i a" }}</time>
+                                                    </a>
+                                                </div>
+                                            </footer>
+                        
+                                            <div class="comment-content">
+                                                <p>{{ comment.content }}</p>
+                                            </div>
+                        
+                                            {% comment %} <div class="reply">
+                                                <a href="#" class="comment-reply-link">Reply</a>
+                                            </div> {% endcomment %}
+                                        </article>
+                                    </li>
+                                {% endfor %}
+                            </ol>
+                        
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">Leave a Reply</h3>
+                            
+                                <form class="comment-form" id="comment-form" method="post" action="{% url 'post_comment' category.slug blog_post.seo_slug %}">
+                                    {% csrf_token %}
+                                    <p class="comment-notes">
+                                        <span id="email-notes">Your email address will not be published.</span>
+                                        Required fields are marked <span class="required">*</span>
+                                    </p>
+                                    <p class="comment-form-comment">
+                                        <label for="comment">Comment</label>
+                                        <textarea name="content" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
+                                    </p>
+                                    <p class="comment-form-author">
+                                        <label for="name">Name <span class="required">*</span></label>
+                                        <input type="text" id="name" name="name" required="required">
+                                    </p>
+                                    <p class="comment-form-email">
+                                        <label for="email">Email <span class="required">*</span></label>
+                                        <input type="email" id="email" name="email" required="required">
+                                    </p>
+                                    <p class="form-submit">
+                                        <input type="submit" name="submit" id="submit" class="submit" value="Post Comment">
+                                    </p>
+                                </form>
+                            
+                            </div>
+                            <div id="comment-message" class="comment-messages" style="display:none; margin-top:10px, font-style:bold;"></div>
+                            
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const form = document.getElementById('comment-form');
+                                    const messageDiv = document.getElementById('comment-message');
+                            
+                                    form.addEventListener('submit', function(event) {
+                                        event.preventDefault(); // Prevent the default form submission
+                            
+                                        const formData = new FormData(form);
+                            
+                                        fetch(form.action, {
+                                            method: 'POST',
+                                            body: formData,
+                                            headers: {
+                                                'X-Requested-With': 'XMLHttpRequest', // Indicate an AJAX request
+                                                'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value // Include CSRF token
+                                            }
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                messageDiv.innerText = data.message;
+                                                messageDiv.className = 'comment-messages success';
+                                                messageDiv.style.display = 'block';
+                                                form.reset(); // Reset form fields after successful submission
+                                            } else {
+                                                messageDiv.innerText = data.message;
+                                                messageDiv.className = 'comment-messages error';
+                                                messageDiv.style.display = 'block';
+                                            }
+                                        })
+                                        .catch(error => {
+                                            messageDiv.innerText = 'An error occurred. Please try again later.';
+                                            messageDiv.className = 'comment-messages error';
+                                            messageDiv.style.display = 'block';
+                                        });
+                                    });
+                                });
+                            </script>
+                            
+                            
                         </div>
+                        
                     </div>
 
                     <div class="col-lg-4 col-md-12">
                         <aside class="widget-area" id="secondary">
-                            <section class="widget widget_search">
+                            {% comment %} <section class="widget widget_search">
                                 <form class="search-form">
                                     <label>
                                         <span class="screen-reader-text">Search for:</span>
@@ -186,13 +291,38 @@
                                 <h3 class="widget-title">Recent Posts</h3>
 
                                 <ul>
-                                    <li><a href="single-post-2.html">How to Become a Successful Entry Level UX Designer</a></li>
-                                    <li><a href="single-post-2.html">How to start your business as an entrepreneur</a></li>
-                                    <li><a href="single-post-4.html">How to be a successful entrepreneur</a></li>
-                                    <li><a href="single-post-2.html">How to Become a Successful Entry Level UX Designer</a></li>
-                                    <li><a href="single-post-4.html">Protect your workplace from cyber attacks</a></li>
+                                    {% for i in more_news %}
+                                    <li><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{i.title}}</a></li>
+                                    {% endfor %}
                                 </ul>
+                            </section> {% endcomment %}
+                            <section class="widget widget_search">
+                                <form class="search-form" id="searchForm">
+                                    <label>
+                                        <span class="screen-reader-text">Search for:</span>
+                                        <input type="search" name="q" class="search-field" placeholder="Search here..." id="searchInput">
+                                    </label>
+                            
+                                    <!-- This is where the search results will be dynamically injected -->
+                                    {% comment %} <ul id="search-results">
+                                        <!-- Initially, you can show the default blog posts, but this will be replaced by the AJAX response -->
+                                        {% for i in more_news %}
+                                        <li><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{ i.title }}</a></li>
+                                        {% endfor %}
+                                    </ul> {% endcomment %}
+                                </form>
                             </section>
+
+                            
+                                <section class="widget widget_recent_entries">
+                                    <h3 class="widget-title">Recent Posts</h3>
+                                
+                                    <ul id="search-results">
+                                        {% for i in more_news %}
+                                        <li><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{i.title}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </section>
 {% comment %} 
                             <section class="widget widget_recent_comments">
                                 <h3 class="widget-title">Recent Comments</h3>
@@ -246,7 +376,7 @@
                                 </ul>
                             </section> {% endcomment %}
 
-                            <section class="widget widget_categories">
+                            {% comment %} <section class="widget widget_categories">
                                 <h3 class="widget-title">Categories</h3>
 
                                 <ul>
@@ -256,8 +386,8 @@
                                     <li><a href="post-category-3.html">Tips</a></li>
                                     <li><a href="post-category-1.html">Uncategorized</a></li>
                                 </ul>
-                            </section>
-
+                            </section> {% endcomment %}
+{% comment %} 
                             <section class="widget widget_meta">
                                 <h3 class="widget-title">Meta</h3>
 
@@ -267,9 +397,9 @@
                                     <li><a href="single-post-2.html">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
                                     <li><a href="single-post-2.html">WordPress.org</a></li>
                                 </ul>
-                            </section>
+                            </section> {% endcomment %}
 
-                            <section class="widget widget_tag_cloud">
+                            {% comment %} <section class="widget widget_tag_cloud">
                                 <h3 class="widget-title">Tags</h3>
 
                                 <div class="tagcloud">
@@ -282,7 +412,7 @@
                                     <a href="post-category-5.html">Startup <span class="tag-link-count"> (1)</span></a>
                                     <a href="post-category-3.html">Tips <span class="tag-link-count"> (2)</span></a>
                                 </div>
-                            </section>
+                            </section> {% endcomment %}
                         </aside>
                     </div>
                 </div>

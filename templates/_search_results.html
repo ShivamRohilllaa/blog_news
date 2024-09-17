@@ -1,0 +1,7 @@
+{% if results %}
+    {% for i in results %}
+        <li><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{ i.title }}</a></li>
+    {% endfor %}
+{% else %}
+    <li>No results found</li>
+{% endif %}

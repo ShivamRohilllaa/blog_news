@@ -38,3 +38,12 @@ def more_news(request):
 def current_date(request):
     today_date = datetime.now().strftime("%A, %B %d")
     return dict(today_date=today_date)
+
+def social_links(request):
+    social_links = SocialMedia.objects.all()
+    return dict(social_links=social_links)
+    
+def address(request):
+    address = WebAddress.objects.all()
+    return dict(address=address)
+    

@@ -5,33 +5,31 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single-footer-widget">
                     <h3>About The Magazine</h3>
+                    {% for i in address %}
                     <div class="contact-info">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                        <p>{{i.about}}</p>
                         <ul>
-                            <li><i class="icofont-google-map"></i> Noida, UP, India</li>
+                            <li><i class="icofont-google-map"></i> {{i.city}}, {{i.zipcode}} {{i.state}}, India</li>
                             <li><i class="icofont-phone"></i> <a href="tel:+5872344521">+91-0000000000</a></li>
                             <li><i class="icofont-envelope"></i> <a href=""><span class="__cf_email__" data-cfemail="">elecomedia@gmail.com</span></a></li>
                         </ul>
                     </div>
+                    {% endfor %}
                     <div class="connect-social">
                         <p>We're social, connect with us:</p>
+                        {% for i in social_links %}
                         <ul>
                             <li>
-                                <a href="https://www.facebook.com/login/" target="_blank"><i class="icofont-facebook"></i></a>
+                                <a href="{{i.facebook}}" target="_blank"><i class="icofont-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="https://twitter.com/login/" target="_blank"><i class="icofont-twitter"></i></a>
+                                <a href="{{i.twitter}}" target="_blank"><i class="icofont-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="https://linkedin.com/login" target="_blank"><i class="icofont-linkedin"></i></a>
-                            </li>
-                            <li>
-                               <a href="https://www.instagram.com/accounts/login/" target="_blank"><i class="icofont-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://rss.com/login/" target="_blank"><i class="icofont-rss"></i></a>
+                               <a href="{{i.instagram}}" target="_blank"><i class="icofont-instagram"></i></a>
                             </li>
                         </ul>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -83,7 +81,7 @@
                 <div class="col-lg-6 col-md-12">
                     <p>© Website is Proudly Owned by <a href="https://www.elecomedia.com" target="_blank">Elecomedia</a></p>
                 </div>
-                <div class="col-lg-6 col-md-12">
+                {% comment %} <div class="col-lg-6 col-md-12">
                     <ul class="footer-nav">
                         <li><a href="">Home</a></li>
                         <li><a href="">Blog</a></li>
@@ -91,7 +89,7 @@
                         <li><a href="">Contact</a></li>
                         <li><a href="">Advertisement</a></li>
                     </ul>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
     </div>
