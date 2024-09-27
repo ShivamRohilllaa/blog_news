@@ -27,7 +27,7 @@
                                     <li><i class="icofont-calendar"></i> {{blog_post.created_at|date}}</li>
                                 </ul>
 
-                                <p>{{blog_post.content}}<p>
+                                <p>{{blog_post.content|safe}}<p>
                                 <ul class="category">
                                     <li><span>Tags:</span></li>
                                     <li><a href="{% url 'category_detail' category.slug %}">{{category.name}}</a></li>
