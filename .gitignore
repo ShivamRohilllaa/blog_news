@@ -60,3 +60,4 @@ coverage.xml
 
 # Other
 *.git
+db.sqlite3

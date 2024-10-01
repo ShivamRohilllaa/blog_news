@@ -4,6 +4,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="icon" href="{% static "img/favicon_io/favicon.ico" %}" type="image/x-icon">
         <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
         <link rel="stylesheet" href="{% static "css/animate.min.css" %}"/>
         <link rel="stylesheet" href="{% static "css/icofont.min.css" %}"/>
@@ -13,7 +14,7 @@
         <link rel="stylesheet" href="{% static "css/style.css" %}"/>
         <link rel="stylesheet" href="{% static "css/dark.css" %}"/>
         <link rel="stylesheet" href="{% static "css/responsive.css" %}"/>
-        <title>News Magazine</title>
+        <title>{% block title %}{% endblock title %}</title>
         <link rel="icon" type="image/png" href="{% static "img/favicon.png" %}" />
         {% block style %}
         

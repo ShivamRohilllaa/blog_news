@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}
+ELNBC: Politics News, Sports, Bussiness, Lifestyle
+{% endblock title %}
 {% block body %}
 {% include "header.html" %}
-        <section class="blog-home">
+        {% comment %} <section class="blog-home">
             <div class="blog-home-slides owl-carousel owl-theme">
                 {% for i in slider_posts %}
                 <div class="col-lg-12">
@@ -23,8 +26,39 @@
                 </div>
                 {% endfor %}
             </div>
+        </section> {% endcomment %}
+        
+        <section class="new-news-area bg-color-none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="new-news-slides-two new-news-slides owl-carousel owl-theme">
+                            {% for i in slider_posts %}
+                            <div class="single-default-news">
+                                <div class="blog-image">
+                                    <a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">
+                                        <img src="{{ i.blog_image.url }}" alt="image" />
+                                    </a>
+                                </div>
+                                <div class="news-content">
+                                    <ul>
+                                        <li><i class="icofont-user-suited"></i> By <a href="#">{{ i.author }}</a></li>
+                                        <li><i class="icofont-calendar"></i> {{ i.created_at|date:"F d, Y" }}</li>
+                                    </ul>
+                                    <h3><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{ i.title }}</a></h3>
+                                </div>
+                                <div class="tags">
+                                    <a href="{% url 'category_detail' i.category.slug %}">{{ i.category.name }}</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-
+        
+        
         <section class="default-news-area ptb-40">
             <div class="container">
                 <div class="row">
