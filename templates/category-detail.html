@@ -46,7 +46,7 @@
                                 <div class="col-lg-7 col-md-6">
                                     <div class="category-news-content">
                                         <span><i class="icofont-clock-time"></i> {{ i.created_at }}</span>
-                                        <h3><a href="">{{ i.title }}</a></h3>
+                                        <h3><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{ i.title }}</a></h3>
                                         <p>{{ i.content|truncatechars:200 }}</p>
                                     </div>
                                 </div>
