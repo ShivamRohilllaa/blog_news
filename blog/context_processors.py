@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 def menu_links(request):
-    allcat = Category.objects.all()
+    allcat = Category.objects.all().order_by('sort_order')
     return dict(allcat=allcat)
 
 def top_three_cat(request):

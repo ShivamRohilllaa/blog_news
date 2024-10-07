@@ -12,7 +12,7 @@ class BlogAdmin(ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(ModelAdmin):
-    list_display = ('name', 'slug', 'description')
+    list_display = ('name', 'slug', 'description', 'sort_order')
     search_fields = ('name',)
 
 @admin.register(Comment)
