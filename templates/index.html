@@ -182,7 +182,7 @@ ELNBC: Politics News, Sports, Bussiness, Lifestyle
                                                     <li><i class="icofont-speech-comments"></i> <a href="">50</a></li>
                                                 </ul>
                                                 <h3><a href="{% url 'blog_detail' j.category.slug j.seo_slug %}">{{j.title}}</a></h3>
-                                                <p>{{ j.content|truncatechars:100 }}</p>
+                                                <p>{{ j.content|safe|truncatechars:100 }}</p>
                                             </div>
                                         </div>
                                         {% endfor %}
