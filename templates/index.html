@@ -3,6 +3,52 @@
 {% block title %}
 ELNBC: Politics News, Sports, Bussiness, Lifestyle
 {% endblock title %}
+{% block style %}
+<style>
+    .carousel-caption {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        color: #fff;
+        padding: 15px;
+        text-align: left;
+    }
+    
+    .carousel-caption h3 {
+        font-size: 24px;
+        margin: 10px 0;
+    }
+    
+    .carousel-caption ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 20px;
+    }
+    
+    .carousel-caption ul li {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .carousel-caption ul li i {
+        margin-right: 5px;
+    }
+    
+    .carousel-caption .category a {
+        color: #fff;
+        text-decoration: none;
+        background: #007bff; /* Bootstrap blue */
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    
+</style>
+{% endblock style %}
 {% block body %}
 {% include "header.html" %}
         {% comment %} <section class="blog-home">
@@ -57,6 +103,39 @@ ELNBC: Politics News, Sports, Bussiness, Lifestyle
                 </div>
             </div>
         </section>
+        
+        {% comment %} <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                {% for i in slider_posts %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}" style="height:500px;">
+                    <img src="{{ i.blog_image.url }}" class="d-block w-100" alt="{{ i.title }}">
+
+                    <!-- Overlay Text Section -->
+                    <div class="carousel-caption">
+                        <ul>
+                            <li><i class="icofont-user-suited"></i> By <a href="#">{{ i.author }}</a></li>
+                            <li><i class="icofont-calendar"></i> {{ i.created_at|date:"F d, Y" }}</li>
+                        </ul>
+                        <h3>{{ i.title }}</h3>
+                        <div class="category">
+                            <a href="{% url 'category_detail' i.category.slug %}">{{ i.category.name }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div> {% endcomment %}
+        
         
         
         <section class="default-news-area ptb-40">
