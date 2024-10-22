@@ -78,7 +78,8 @@ ELNBC: Politics News, Sports, Bussiness, Lifestyle
                     {% for i in slider_posts %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         <div class="carousel-image-wrapper">
-                            <img src="{{ i.blog_image.url }}" class="d-block w-100" alt="{{ i.title }}">
+                            <img src="{% if i.blog_slider_image %}{{ i.blog_slider_image.url }}{% else %}{{ i.blog_image.url }}{% endif %}" class="d-block w-100" alt="{{ i.title }}">
+
                             <div class="carousel-overlay"></div>
                         </div>
                         <div class="carousel-caption d-none d-md-block">

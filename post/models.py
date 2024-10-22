@@ -39,6 +39,7 @@ class Blog(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='blogs')
     blog_image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
+    blog_slider_image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
     image_alt_text = models.CharField(max_length=255, blank=True, null=True)
 
     # SEO Fields
