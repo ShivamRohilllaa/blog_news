@@ -5,48 +5,46 @@ ELNBC: Politics News, Sports, Bussiness, Lifestyle
 {% endblock title %}
 {% block style %}
 <style>
-    .carousel-caption {
-        position: absolute;
-        bottom: 20px;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-        color: #fff;
-        padding: 15px;
-        text-align: left;
-    }
-    
-    .carousel-caption h3 {
-        font-size: 24px;
-        margin: 10px 0;
-    }
-    
-    .carousel-caption ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        gap: 20px;
-    }
-    
-    .carousel-caption ul li {
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-    }
-    
-    .carousel-caption ul li i {
-        margin-right: 5px;
-    }
-    
-    .carousel-caption .category a {
-        color: #fff;
-        text-decoration: none;
-        background: #007bff; /* Bootstrap blue */
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
-    
+    {% comment %} .carousel-item {height: 500px !important;
+        object-fit: cover !important;}
+        .carousel-item img {
+            height: 100%; /* Make the image fill the height of the container */
+            width: 100%%; /* Maintain the aspect ratio */
+            object-fit: contain; /* Change to 'contain' to prevent cropping */
+            margin: 0 auto; /* Center the image horizontally */
+        } {% endcomment %}
+
+        /* Slider */
+.carousel-item {
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.carousel-image-wrapper {
+    position: relative;
+}
+
+.carousel-image-wrapper img {
+    width: 100%;
+    height: auto; /* Adjust based on your requirements */
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: 1; /* Ensure the overlay is above the image */
+}
+
+.carousel-caption {
+    {% comment %} position: relative; /* Keep the text above the overlay */ {% endcomment %}
+    z-index: 2; /* Ensure the text is above the overlay */
+}
+
 </style>
 {% endblock style %}
 {% block body %}
@@ -75,69 +73,34 @@ ELNBC: Politics News, Sports, Bussiness, Lifestyle
         </section> {% endcomment %}
         
         <section class="new-news-area bg-color-none">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="new-news-slides-two new-news-slides owl-carousel owl-theme">
-                            {% for i in slider_posts %}
-                            <div class="single-default-news">
-                                <div class="blog-image">
-                                    <a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">
-                                        <img src="{{ i.blog_image.url }}" alt="image" />
-                                    </a>
-                                </div>
-                                <div class="news-content">
-                                    <ul>
-                                        <li><i class="icofont-user-suited"></i> By <a href="#">{{ i.author }}</a></li>
-                                        <li><i class="icofont-calendar"></i> {{ i.created_at|date:"F d, Y" }}</li>
-                                    </ul>
-                                    <h3><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}">{{ i.title }}</a></h3>
-                                </div>
-                                <div class="tags">
-                                    <a href="{% url 'category_detail' i.category.slug %}">{{ i.category.name }}</a>
-                                </div>
-                            </div>
-                            {% endfor %}
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                    {% for i in slider_posts %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="carousel-image-wrapper">
+                            <img src="{{ i.blog_image.url }}" class="d-block w-100" alt="{{ i.title }}">
+                            <div class="carousel-overlay"></div>
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3><a href="{% url 'blog_detail' i.category.slug i.seo_slug %}" style="color:#fff;">{{ i.title }}</a></h3>
+                            <h6>{{ i.created_at|date:"F d, Y" }}</h6>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </section>
         
-        {% comment %} <div id="carouselExample" class="carousel slide">
-            <div class="carousel-inner">
-                {% for i in slider_posts %}
-                <div class="carousel-item {% if forloop.first %}active{% endif %}" style="height:500px;">
-                    <img src="{{ i.blog_image.url }}" class="d-block w-100" alt="{{ i.title }}">
+<!-- Slider -->
 
-                    <!-- Overlay Text Section -->
-                    <div class="carousel-caption">
-                        <ul>
-                            <li><i class="icofont-user-suited"></i> By <a href="#">{{ i.author }}</a></li>
-                            <li><i class="icofont-calendar"></i> {{ i.created_at|date:"F d, Y" }}</li>
-                        </ul>
-                        <h3>{{ i.title }}</h3>
-                        <div class="category">
-                            <a href="{% url 'category_detail' i.category.slug %}">{{ i.category.name }}</a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        
-            <!-- Carousel Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div> {% endcomment %}
-        
-        
-        
         <section class="default-news-area ptb-40">
             <div class="container">
                 <div class="row">

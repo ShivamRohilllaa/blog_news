@@ -11,11 +11,11 @@ from django.http import HttpResponseBadRequest
 # Create your views here.
 
 def index(request):
-    slider_posts = Blog.objects.filter(is_main_slider=True, is_published=True, status='published')
-    breaking_news = Blog.objects.filter(is_breaking=True, is_published=True, status='published')
+    slider_posts = Blog.objects.filter(is_main_slider=True, is_published=True, status='published').order_by('-created_at')
+    breaking_news = Blog.objects.filter(is_breaking=True, is_published=True, status='published').order_by('-created_at')
     top_three_news = Blog.objects.filter(is_published=True, status='published').order_by('-created_at')[:3]
-    popular_news = Blog.objects.filter(is_popular=True, status='published')
-    international_news = Blog.objects.filter(category__name='International', status='published')
+    popular_news = Blog.objects.filter(is_popular=True, status='published').order_by('-created_at')
+    international_news = Blog.objects.filter(category__name='International', status='published').order_by('-created_at')
     more_news = Blog.objects.filter(status='published').order_by('-created_at')
     
     context = {'slider_posts':slider_posts, 'breaking_news':breaking_news, 'top_three_news':top_three_news, 'popular_news':popular_news, 'international_news':international_news, 'more_news':more_news}
@@ -24,7 +24,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 def category_detail(request, slug):
-    cat_posts = Blog.objects.filter(category__slug=slug)
+    cat_posts = Blog.objects.filter(category__slug=slug).order_by('-created_at')
     cat = get_object_or_404(Category, slug=slug)
     top_three_news = Blog.objects.filter(is_published=True, status='published').order_by('-created_at')[:3]
     
