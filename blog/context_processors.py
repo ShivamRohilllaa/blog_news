@@ -1,14 +1,20 @@
 from post.models import *
 from django.shortcuts import get_object_or_404
 from datetime import datetime
-
+from django.db.models import Prefetch
 
 def menu_links(request):
     allcat = Category.objects.all().order_by('sort_order')
     return dict(allcat=allcat)
 
 def top_three_cat(request):
-    top_cat = Category.objects.filter(is_top_three=True)
+    top_cat = Category.objects.filter(is_top_three=True).prefetch_related(
+        Prefetch(
+            'blogs',
+            queryset=Blog.objects.order_by('-created_at')[:5],
+            to_attr='latest_blogs'
+        )
+    )
     return dict(top_cat=top_cat)
 
 # def related_posts(request):
