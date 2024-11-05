@@ -214,7 +214,7 @@ ELNBC: Politics News, Sports, Bussiness, Lifestyle
                                 <div class="health-lifestyle-news">
                                     <div class="section-title"><h2>{{i.name}}</h2></div>
                                     <div class="health-lifestyle-news-slides owl-carousel owl-theme">
-                                        {% for j in i.blogs.all %}
+                                        {% for j in i.blogs.all|slice:":5" %}
                                         <div class="single-health-lifestyle-news">
                                             <div class="news-image">
                                                 <a href="{% url 'blog_detail' j.category.slug j.seo_slug %}"><img src="{{j.blog_image.url}}" alt="image" /></a>
